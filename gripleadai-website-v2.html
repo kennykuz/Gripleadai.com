@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GripLead AI — AI Systems for Plumbers & HVAC Companies in the GTA</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-pale: #eff6ff;
+    --white: #ffffff;
+    --off: #f9fafb;
+    --gray: #6b7280;
+    --light: #e5e7eb;
+    --text: #111827;
+    --green: #16a34a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--light);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 34px; height: 34px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.3px;
+  }
+
+  .logo-text span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
+  .btn-outline { border: 1.5px solid var(--light); color: var(--navy); background: var(--white); }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-solid { background: var(--blue); color: white; box-shadow: 0 2px 12px rgba(37,99,235,0.3); }
+  .btn-solid:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,0.4); }
+  .btn-solid-lg { background: var(--blue); color: white; box-shadow: 0 4px 20px rgba(37,99,235,0.35); padding: 14px 28px; font-size: 15px; border-radius: 10px; }
+  .btn-solid-lg:hover { background: var(--blue-light); transform: translateY(-2px); }
+  .btn-ghost-lg { background: white; color: var(--navy); border: 1.5px solid var(--light); padding: 14px 28px; font-size: 15px; border-radius: 10px; }
+  .btn-ghost-lg:hover { border-color: var(--navy); }
+
+  .mobile-btn { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--navy); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--white);
+    padding: 80px 5% 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--light);
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-pale);
+    border: 1px solid rgba(37,99,235,0.2);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    max-width: 780px;
+    margin: 0 auto 20px;
+  }
+
+  .hero h1 span { color: var(--blue); }
+
+  .hero p {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--gray);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .hero-proof-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+  }
+
+  .proof-avatars {
+    display: flex;
+  }
+
+  .proof-avatars span {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--navy);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-left: -8px;
+  }
+
+  .proof-avatars span:first-child { margin-left: 0; }
+
+  .stars { color: #f59e0b; letter-spacing: 1px; font-size: 13px; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--off);
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 28s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-track:hover { animation-play-state: paused; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 32px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray);
+    white-space: nowrap;
+    border-right: 1px solid var(--light);
+  }
+
+  .marquee-item span { font-size: 16px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 5%; }
+
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .sub {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 540px;
+    font-weight: 400;
+  }
+
+  /* ── PROBLEM ── */
+  #problem { background: var(--white); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 56px;
+  }
+
+  .problem-text h2 { margin-bottom: 40px; }
+
+  .prob-items { display: flex; flex-direction: column; gap: 24px; }
+
+  .prob-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .prob-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: #fef2f2;
+  }
+
+  .prob-item h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .prob-item p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* BIG STAT CARD */
+  .stat-card {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 40px 36px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(37,99,235,0.2);
+  }
+
+  .stat-card .big-num {
+    font-size: 72px;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    letter-spacing: -2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-card .big-num span { color: #60a5fa; }
+
+  .stat-card p {
+    font-size: 16px;
+    color: #94a3b8;
+    margin-top: 8px;
+    line-height: 1.6;
+    font-weight: 400;
+    position: relative; z-index: 1;
+  }
+
+  .stat-card .mini-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative; z-index: 1;
+  }
+
+  .mini-stat .val {
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+  }
+
+  .mini-stat .lbl {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── HOW ── */
+  #how { background: var(--off); border-top: 1px solid var(--light); border-bottom: 1px solid var(--light); }
+
+  .how-header { text-align: center; margin-bottom: 64px; }
+  .how-header .sub { margin: 0 auto; }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(16.6% + 28px);
+    right: calc(16.6% + 28px);
+    height: 2px;
+    background: var(--light);
+  }
+
+  .tl-step {
+    padding: 0 28px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: all 0.5s ease;
+  }
+
+  .tl-step.visible { opacity: 1; transform: translateY(0); }
+  .tl-step:nth-child(2) { transition-delay: 0.15s; }
+  .tl-step:nth-child(3) { transition-delay: 0.3s; }
+
+  .tl-dot {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    position: relative; z-index: 1;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .tl-step:hover .tl-dot {
+    background: var(--blue);
+    border-color: var(--blue);
+    box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+    transform: scale(1.1);
+  }
+
+  .tl-step .day-tag {
+    display: inline-block;
+    background: var(--blue-pale);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .tl-step h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .tl-step p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--white); }
+
+  .testimonials-header { margin-bottom: 48px; }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .testi-card {
+    background: var(--off);
+    border: 1px solid var(--light);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.25s;
+  }
+
+  .testi-card:hover {
+    border-color: rgba(37,99,235,0.25);
+    box-shadow: 0 8px 28px rgba(37,99,235,0.08);
+    transform: translateY(-3px);
+  }
+
+  .testi-result {
+    background: #dcfce7;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  .testi-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .testi-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--light);
+  }
+
+  .testi-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .testi-author .name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .testi-author .biz {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--off); border-top: 1px solid var(--light); }
+
+  .services-header { margin-bottom: 48px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .svc-card {
+    background: var(--white);
+    border: 1px solid var(--light);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.25s;
+  }
+
+  .svc-card:hover {
+    border-color: rgba(37,99,235,0.3);
+    box-shadow: 0 8px 28px rgba(37,99,235,0.08);
+    transform: translateY(-3px);
+  }
+
+  .svc-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--blue-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+    transition: background 0.2s;
+  }
+
+  .svc-card:hover .svc-icon { background: var(--blue); }
+
+  .svc-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .svc-card p {
+    font-size: 13.5px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ── INDUSTRIES MARQUEE ── */
+  .industries-marquee {
+    overflow: hidden;
+    padding: 20px 0;
+    border-top: 1px solid var(--light);
+    margin-top: 48px;
+  }
+
+  .ind-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 22s linear infinite;
+    width: max-content;
+  }
+
+  .ind-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+    border-right: 1px solid var(--light);
+  }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--white); }
+
+  .pricing-header { text-align: center; margin-bottom: 56px; }
+  .pricing-header .sub { margin: 0 auto; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    border: 1.5px solid var(--light);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    transition: all 0.2s;
+    background: var(--white);
+  }
+
+  .price-card:hover {
+    border-color: rgba(37,99,235,0.25);
+    box-shadow: 0 8px 32px rgba(37,99,235,0.08);
+    transform: translateY(-3px);
+  }
+
+  .price-card.featured {
+    border-color: var(--blue);
+    box-shadow: 0 12px 40px rgba(37,99,235,0.15);
+  }
+
+  .popular-tag {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .price-card .pkg-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .price-card .pkg-tagline {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .price-card .setup-fee {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .price-card .setup-label {
+    font-size: 12px;
+    color: var(--gray);
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .price-card .monthly-fee {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .price-divider {
+    border: none;
+    border-top: 1px solid var(--light);
+    margin-bottom: 24px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 28px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .feature-list li .chk {
+    color: var(--blue);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-weight: 700;
+  }
+
+  .feature-list li .x {
+    color: #d1d5db;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .feature-list li.dim { color: #9ca3af; }
+
+  .price-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1.5px solid var(--light);
+    color: var(--navy);
+    background: var(--white);
+  }
+
+  .price-btn:hover { border-color: var(--navy); }
+
+  .price-card.featured .price-btn {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+  }
+
+  .price-card.featured .price-btn:hover {
+    background: var(--blue-light);
+    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+  }
+
+  .pricing-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 28px;
+  }
+
+  /* ── FAQ ── */
+  #faq { background: var(--off); border-top: 1px solid var(--light); }
+
+  .faq-header { text-align: center; margin-bottom: 48px; }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--light);
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+  }
+
+  .faq-q span {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .faq-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--off);
+    border: 1px solid var(--light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: var(--gray);
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    padding: 0 0 20px;
+    display: none;
+    max-width: 620px;
+  }
+
+  .faq-item.open .faq-a { display: block; animation: fadeIn 0.25s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--navy);
+    padding: 90px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #cta .container { position: relative; z-index: 1; }
+
+  #cta .section-label { color: #60a5fa; }
+
+  #cta h2 { color: white; max-width: 600px; margin: 0 auto 16px; }
+
+  #cta .sub { color: #64748b; margin: 0 auto 40px; }
+
+  #cta .cta-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white { background: white; color: var(--navy); padding: 14px 28px; font-size: 15px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-white:hover { background: #f0f4ff; transform: translateY(-2px); }
+
+  .btn-outline-white { background: transparent; color: white; padding: 14px 28px; font-size: 15px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.25); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+
+  #cta .guarantee {
+    margin-top: 32px;
+    font-size: 13px;
+    color: #475569;
+  }
+
+  #cta .guarantee strong { color: #64748b; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060e1c;
+    padding: 40px 5%;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+  }
+
+  .footer-logo-wrap .logo-text { color: white; }
+
+  .footer-desc {
+    font-size: 13px;
+    color: #475569;
+    margin-top: 8px;
+    max-width: 260px;
+    line-height: 1.6;
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+
+  .footer-col h5 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748b;
+    margin-bottom: 14px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-col ul li a {
+    font-size: 13px;
+    color: #475569;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: #94a3b8; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: #334155;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .problem-grid { grid-template-columns: 1fr; }
+    .testi-grid, .services-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .timeline { grid-template-columns: 1fr; }
+    .timeline::before { display: none; }
+    .footer-cols { gap: 32px; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-btns .btn-outline { display: none; }
+    .mobile-btn { display: block; }
+    .hero { padding: 60px 5% 48px; }
+    section { padding: 60px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">⚡</div>
+    <div class="logo-text">Grip<span>Lead</span> AI</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-btns">
+    <a href="#cta" class="btn btn-outline">Book a Demo</a>
+    <a href="#cta" class="btn btn-solid">Get Started →</a>
+    <button class="mobile-btn" onclick="toggleNav()">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🔧 Built Exclusively for Plumbers & HVAC Companies</div>
+  <h1>More Booked Jobs.<br><span>Zero Missed Calls.</span></h1>
+  <p>GripLead AI builds custom AI assistants for plumbing and HVAC companies in the GTA — answering emergency calls, capturing leads, and booking jobs automatically, 24 hours a day.</p>
+  <div class="hero-btns">
+    <a href="#cta" class="btn btn-solid-lg">🚀 Get Your Free Demo</a>
+    <a href="#pricing" class="btn btn-ghost-lg">See Pricing →</a>
+  </div>
+  <div class="hero-proof-bar">
+    <div class="proof-avatars">
+      <span>🔧</span>
+      <span>❄️</span>
+      <span>🚿</span>
+      <span>🛠️</span>
+    </div>
+    <div class="stars">★★★★★</div>
+    <span>Trusted by plumbing & HVAC companies across the GTA</span>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>🪠</span> Drain Cleaning</div>
+    <div class="marquee-item"><span>🚨</span> Emergency Plumbing</div>
+    <div class="marquee-item"><span>❄️</span> AC Repair & Install</div>
+    <div class="marquee-item"><span>🔥</span> Furnace & Heating</div>
+    <div class="marquee-item"><span>💧</span> Water Heater Service</div>
+    <div class="marquee-item"><span>🏠</span> Basement Waterproofing</div>
+    <div class="marquee-item"><span>⚙️</span> Sump Pump Service</div>
+    <div class="marquee-item"><span>🔧</span> Pipe Repair</div>
+    <div class="marquee-item"><span>🌡️</span> HVAC Maintenance</div>
+    <div class="marquee-item"><span>💨</span> Duct Cleaning</div>
+    <div class="marquee-item"><span>🪠</span> Drain Cleaning</div>
+    <div class="marquee-item"><span>🚨</span> Emergency Plumbing</div>
+    <div class="marquee-item"><span>❄️</span> AC Repair & Install</div>
+    <div class="marquee-item"><span>🔥</span> Furnace & Heating</div>
+    <div class="marquee-item"><span>💧</span> Water Heater Service</div>
+    <div class="marquee-item"><span>🏠</span> Basement Waterproofing</div>
+    <div class="marquee-item"><span>⚙️</span> Sump Pump Service</div>
+    <div class="marquee-item"><span>🔧</span> Pipe Repair</div>
+    <div class="marquee-item"><span>🌡️</span> HVAC Maintenance</div>
+    <div class="marquee-item"><span>💨</span> Duct Cleaning</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-text">
+        <span class="section-label">The Problem</span>
+        <h2>Plumbers & HVAC Companies Lose Jobs Every Single Night.</h2>
+        <div class="prob-items">
+          <div class="prob-item">
+            <div class="prob-icon">📵</div>
+            <div>
+              <h4>You're On the Job — Not the Phone</h4>
+              <p>While you're under a sink or on a rooftop, customers are calling and not getting an answer. They hang up and call the next plumber on Google.</p>
+            </div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-icon">🌙</div>
+            <div>
+              <h4>Emergency Calls Hit at 2am</h4>
+              <p>A burst pipe doesn't care what time it is. If there's no one to answer at 2am, that $1,500 emergency job goes to your competitor.</p>
+            </div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-icon">😴</div>
+            <div>
+              <h4>Your Website Does Nothing After Hours</h4>
+              <p>Someone finds you at 10pm, ready to book an AC tune-up. There's no way to book. They leave and never come back.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num">62<span>%</span></div>
+        <p>of customers who can't reach a business on first contact will move on to a competitor — without ever calling back.</p>
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <div class="val">24/7</div>
+            <div class="lbl">AI Coverage</div>
+          </div>
+          <div class="mini-stat">
+            <div class="val">&lt;1 min</div>
+            <div class="lbl">Response Time</div>
+          </div>
+          <div class="mini-stat">
+            <div class="val">7 days</div>
+            <div class="lbl">To Go Live</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="how-header">
+      <span class="section-label">The Process</span>
+      <h2>Live on Your Website in 7 Days.</h2>
+      <p class="sub">No technical knowledge needed. We handle everything — you just show up for the leads.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-dot">📞</div>
+        <div class="day-tag">Day 1</div>
+        <h3>Free Consultation</h3>
+        <p>We learn about your business, services, and what problems you want solved. No commitment required.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot">🛠️</div>
+        <div class="day-tag">Day 2–5</div>
+        <h3>We Build It For You</h3>
+        <p>Your custom AI assistant is built and trained on your exact services, pricing, locations, and FAQs.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot">🚀</div>
+        <div class="day-tag">Day 6–7</div>
+        <h3>Go Live & Start Winning</h3>
+        <p>We install it on your website. You approve it. Leads start coming in — even while you sleep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <span class="section-label">Results</span>
+      <h2>Businesses Like Yours, Winning More Jobs.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-result">📈 +8 new leads in first 30 days</div>
+        <h4>"The AI paid for itself in the first week. Three new drain jobs came in overnight while I slept."</h4>
+        <p>We were losing calls every evening and on weekends. GripLead built us an AI assistant that now handles enquiries 24/7. It even escalates emergency calls. It's like having a receptionist that never sleeps.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MJ</div>
+          <div>
+            <div class="name">Mike Johnson</div>
+            <div class="biz">MJ Plumbing & Drain · Toronto, ON</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-result">📅 Fully booked 2 weeks in advance</div>
+        <h4>"Customers now book AC tune-ups at 11pm without calling. My mornings are free to run jobs."</h4>
+        <p>I used to spend my mornings returning missed calls and booking appointments. Now the AI handles all of it. I show up to jobs — that's it. It even knows our seasonal pricing for heating vs cooling season.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">DT</div>
+          <div>
+            <div class="name">Dave Thornton</div>
+            <div class="biz">Thornton HVAC Services · Mississauga, ON</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-result">⭐ 31 new Google reviews in 8 weeks</div>
+        <h4>"We went from 12 Google reviews to 43 in two months. We now rank above companies with 20+ years on us."</h4>
+        <p>The AI chat and the review automation together is a powerful combo. New customers find us on Google, the chatbot books them, and then we automatically ask for a review after the job. It runs itself.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RP</div>
+          <div>
+            <div class="name">Raj Patel</div>
+            <div class="biz">Comfort Air & Plumbing · Brampton, ON</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">What We Build</span>
+      <h2>AI Tools Built for Plumbing & HVAC Companies.</h2>
+      <p class="sub">Every assistant is custom-built around your exact services — drain cleaning, emergency calls, AC installs, furnace repairs. Not a generic template.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <h3>24/7 AI Chat Assistant</h3>
+        <p>Answers emergency and non-emergency enquiries on your website around the clock. Trained on your services, pricing, and service areas.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📅</div>
+        <h3>Automatic Job Booking</h3>
+        <p>Homeowners book drain cleanings, AC tune-ups, and service calls directly into your schedule — no phone tag needed.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚨</div>
+        <h3>Emergency Call Escalation</h3>
+        <p>Burst pipes and no-heat emergencies get flagged and escalated to your on-call line immediately — so you never miss a high-value job.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📲</div>
+        <h3>Instant Lead Alerts</h3>
+        <p>Every enquiry — name, number, and issue — texted to you the moment it's captured. Wake up to qualified leads ready to book.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⭐</div>
+        <h3>Google Review Automation</h3>
+        <p>After every completed job, your customer gets an automatic review request. Build your Google ranking while you sleep.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>Monthly Performance Report</h3>
+        <p>See exactly how many leads were captured, jobs booked, and emergency calls escalated. Know your ROI every month.</p>
+      </div>
+    </div>
+
+    <div class="industries-marquee">
+      <div class="ind-track">
+        <div class="ind-item">🔧 Plumbers</div>
+        <div class="ind-item">❄️ HVAC Companies</div>
+        <div class="ind-item">🪠 Drain Specialists</div>
+        <div class="ind-item">🔥 Heating & Furnace</div>
+        <div class="ind-item">💧 Water Heater Services</div>
+        <div class="ind-item">🏠 Waterproofing Companies</div>
+        <div class="ind-item">⚙️ Sump Pump Installers</div>
+        <div class="ind-item">🌡️ AC Repair & Install</div>
+        <div class="ind-item">🔧 Plumbers</div>
+        <div class="ind-item">❄️ HVAC Companies</div>
+        <div class="ind-item">🪠 Drain Specialists</div>
+        <div class="ind-item">🔥 Heating & Furnace</div>
+        <div class="ind-item">💧 Water Heater Services</div>
+        <div class="ind-item">🏠 Waterproofing Companies</div>
+        <div class="ind-item">⚙️ Sump Pump Installers</div>
+        <div class="ind-item">🌡️ AC Repair & Install</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <span class="section-label">Pricing</span>
+      <h2>Simple, Transparent Pricing.</h2>
+      <p class="sub">One-time setup fee to build your system, then a low monthly retainer. No contracts. Cancel anytime.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <div class="price-card">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-tagline">Perfect first step</div>
+        <div class="setup-fee">$500</div>
+        <span class="setup-label">one-time setup fee</span>
+        <span class="monthly-fee">+ $199 / month</span>
+        <hr class="price-divider">
+        <ul class="feature-list">
+          <li><span class="chk">✓</span> AI chat assistant on your website</li>
+          <li><span class="chk">✓</span> FAQ answering (hours, services, pricing)</li>
+          <li><span class="chk">✓</span> Lead capture (name + phone)</li>
+          <li><span class="chk">✓</span> Instant text notification on new leads</li>
+          <li><span class="chk">✓</span> Custom branding to match your site</li>
+          <li class="dim"><span class="x">✕</span> Appointment booking calendar</li>
+          <li class="dim"><span class="x">✕</span> Monthly performance report</li>
+        </ul>
+        <a href="#cta" class="price-btn">Get Started</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="price-card featured">
+        <div class="popular-tag">⭐ Most Popular</div>
+        <div class="pkg-name">Pro</div>
+        <div class="pkg-tagline">Best value for most businesses</div>
+        <div class="setup-fee">$997</div>
+        <span class="setup-label">one-time setup fee</span>
+        <span class="monthly-fee">+ $397 / month</span>
+        <hr class="price-divider">
+        <ul class="feature-list">
+          <li><span class="chk">✓</span> Everything in Starter</li>
+          <li><span class="chk">✓</span> Live appointment booking calendar</li>
+          <li><span class="chk">✓</span> SMS + email follow-up to leads</li>
+          <li><span class="chk">✓</span> Emergency escalation flow</li>
+          <li><span class="chk">✓</span> Monthly performance report</li>
+          <li><span class="chk">✓</span> Quarterly chatbot updates</li>
+          <li class="dim"><span class="x">✕</span> Review automation</li>
+        </ul>
+        <a href="#cta" class="price-btn">Get Started</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="price-card">
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-tagline">Full AI growth system</div>
+        <div class="setup-fee">$1,997</div>
+        <span class="setup-label">one-time setup fee</span>
+        <span class="monthly-fee">+ $697 / month</span>
+        <hr class="price-divider">
+        <ul class="feature-list">
+          <li><span class="chk">✓</span> Everything in Pro</li>
+          <li><span class="chk">✓</span> Automated Google review requests</li>
+          <li><span class="chk">✓</span> AI social media content (4/mo)</li>
+          <li><span class="chk">✓</span> Missed-call AI text-back</li>
+          <li><span class="chk">✓</span> Priority support & same-day changes</li>
+          <li><span class="chk">✓</span> Monthly strategy call (30 min)</li>
+          <li><span class="chk">✓</span> Unlimited chatbot updates</li>
+        </ul>
+        <a href="#cta" class="price-btn">Get Started</a>
+      </div>
+
+    </div>
+    <p class="pricing-note">All plans are <strong>month-to-month</strong> — cancel anytime with 30 days notice. · <strong>30-day results guarantee</strong> on all packages.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="section-label">FAQ</span>
+      <h2>Frequently Asked Questions.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Who is GripLead AI for?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">GripLead AI is built specifically for plumbing and HVAC companies in the GTA. If you run a trades business — drain cleaning, emergency plumbing, AC repair, furnace service, waterproofing, or any combination — and you rely on phone calls and website enquiries to book jobs, we can help you capture more of them automatically.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How long does it take to set up?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">Most businesses are fully live within 7 days. After a short intake call to gather your business details, we build and test the AI assistant, then install it on your website. You review and approve before anything goes live.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Do I need any technical knowledge?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">None at all. We handle every technical aspect — building, installing, and maintaining your AI assistant. You don't touch any code or software. You just tell us about your business and we do the rest.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What website platforms do you work with?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">We work with all major website platforms including WordPress, Squarespace, Wix, Shopify, Webflow, and custom-built sites. If you have a website, we can install your AI assistant on it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Is there a contract or lock-in?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">No contracts and no lock-in. All plans are month-to-month. You can cancel anytime with 30 days notice. We believe in earning your business every single month — not trapping you in a long-term deal.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What is the 30-day guarantee?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">If your AI assistant doesn't capture at least 5 qualified leads in the first 30 days, we'll work for free until it does — or we'll refund your first month's retainer. No questions asked. We only win when you win.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Can I see a demo before committing?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">Yes — and it's free. We'll build a live, working demo custom branded for your business at no cost. You can try it yourself before spending a single dollar. Contact us to request your free demo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What areas do you serve?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">We serve local businesses across Canada. Since everything is built and installed remotely, your location doesn't matter. We currently serve clients across Toronto, the GTA, and beyond.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <span class="section-label">Get Started</span>
+    <h2>Ready to Stop Losing Jobs to Missed Calls?</h2>
+    <p class="sub">We'll build you a free, live demo — custom branded for your plumbing or HVAC company — before you spend a single dollar.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@gripleadai.com" class="btn-white">🚀 Get Your Free Demo</a>
+      <a href="mailto:hello@gripleadai.com" class="btn-outline-white">📧 hello@gripleadai.com</a>
+    </div>
+    <p class="guarantee">✅ <strong>30-Day Results Guarantee</strong> · Month-to-month · No lock-in · Serving plumbers & HVAC companies across the GTA</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo-wrap">
+      <a href="#" class="logo">
+        <div class="logo-mark">⚡</div>
+        <div class="logo-text">Grip<span>Lead</span> AI</div>
+      </a>
+      <p class="footer-desc">AI systems for plumbing & HVAC companies in the GTA. We build, install, and manage everything — you just book more jobs.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#cta">Contact Us</a></li>
+          <li><a href="mailto:hello@gripleadai.com">hello@gripleadai.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GripLead AI. All rights reserved.</p>
+    <p>Built for plumbers & HVAC companies in the GTA</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.tl-step').forEach(el => observer.observe(el));
+
+  // Mobile nav
+  function toggleNav() {
+    const links = document.querySelector('.nav-links');
+    const open = links.style.display === 'flex';
+    links.style.cssText = open ? '' :
+      'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:white;border-bottom:1px solid #e5e7eb;padding:20px 5%;gap:16px;z-index:99;box-shadow:0 8px 24px rgba(0,0,0,0.08)';
+    if (!open) links.querySelectorAll('a').forEach(a => a.style.color = '#374151');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 640) document.querySelector('.nav-links').style.cssText = '';
+    });
+  });
+</script>
+</body>
+</html>
